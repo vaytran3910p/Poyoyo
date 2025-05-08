@@ -2,10 +2,9 @@ package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.example.demo.model.Mascot;
+import com.example.demo.model.Talent;
 
 @Repository
-public interface MascotRepository extends JpaRepository<Mascot, Long> {
+public interface TalentRepository extends JpaRepository<Talent, Long> {
 
 }

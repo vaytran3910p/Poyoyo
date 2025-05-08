@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="character")
-public class Character {
+@Table(name="talent")
+public class Talent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long CharId;
+	private Long TalentId;
 	
-	private String CharName;
-	private String CharCode;
+	private String TalentName;
+	private String TalentCode;
 	private String Category;
 	private String Status;
 	private int isActive;
