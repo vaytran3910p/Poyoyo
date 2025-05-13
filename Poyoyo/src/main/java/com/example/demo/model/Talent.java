@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 public class Talent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long TalentId;
+	private Long talentId;
 	
-	private String TalentName;
-	private String TalentCode;
-	private String Category;
-	private String Status;
+	private String talentName;
+	private String talentCode;
+	private String category;
+	private String status;
 	private int isActive;
 	private int isDelete;
 	

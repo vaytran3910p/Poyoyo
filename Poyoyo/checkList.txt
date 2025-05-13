@@ -4,3 +4,5 @@ check list - 09/05/2025
 	- Bổ sung thêm phân trang cho api get
 	- Nâng cấp: bổ sung Custom Repository cho việc custom query
 - done
+--
+add thêm 1 cái query nữa. + trả bài

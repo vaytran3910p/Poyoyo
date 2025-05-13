@@ -58,4 +58,5 @@ public class UserService {
 	public List<UserDTO> getLstUserWithCondition() {
 		return repo.getLstUserWithCompleteInfo();
 	}
+	
 }
