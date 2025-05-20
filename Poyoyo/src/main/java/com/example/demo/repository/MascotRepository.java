@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Mascot;
+import com.example.demo.repository.CustomRepo.MascotRepositoryCustom;
 
-@Repository
-public interface MascotRepository extends JpaRepository<Mascot, Long> {
+public interface MascotRepository extends JpaRepository<Mascot, Long>,MascotRepositoryCustom {
 
 }

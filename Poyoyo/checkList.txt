@@ -6,3 +6,8 @@ check list - 09/05/2025
 - done
 --
 add thêm 1 cái query nữa. + trả bài
+---
+check list day 20/05/2025
+-- CRUD controller for mascot model 
+-- add kafka hmmm hoping
+-- learn docker

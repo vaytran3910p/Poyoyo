@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 public class Mascot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long MascotId;
+	private Long mascotId;
 	
-	private String MascotCode;
-	private String MascotName;
-	private Long CharId;
-	private String Status;
+	private String mascotCode;
+	private String mascotName;
+	private Long charId;
+	private String status;
 	private int isActive;
 	private int isDelete;
 }
