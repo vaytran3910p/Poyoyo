@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import java.util.Set;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,7 @@ public class UserDTO {
 	private String passWord;
 	private String email;
 	private String status; 
+	private Set<String> roles;
 	private int isActive;
 	private int isDelete;
 	

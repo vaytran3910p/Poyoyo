@@ -8,6 +8,75 @@ check list - 09/05/2025
 add thêm 1 cái query nữa. + trả bài
 ---
 check list day 20/05/2025
--- CRUD controller for mascot model 
--- add kafka hmmm hoping
--- learn docker
+-- CRUD controller for mascot model -- done
+-- add kafka hmmm hoping - still coping
+-- learn docker - stil coping
+check list 22/05/2025
+java Oauth - JWT
+
+user - role
+--
+java core  learn
+package - public, private,default
+
+done
+user role userRole entity
+adding spring sercurity > đang làm đến CustomuserDetail
+
+1. SecurityConfig - cấu hình bảo mật
+2. UserDetails và UserDetailService - chuyển user entity thành userdetail
+3. JwtUtils - plugin tạo và kiểm tra JWT
+	- generateToken 
+	- validateToken
+	- extractUserName
+4. JwtAuthenticationFilter - bộ lọc và kiểm tra token
+- chạy trước mọi request trừ reqeust login
+- đọc token từ header parse ra username, load userDetail và set vào SecurityContext
+5. AuthController - Api dăng nhập
+- nhâp username/password
+- xác thực qua AuthenticationManager
+- trả lai jwt token
+6. Exception handling - xử lý các lỗi như
+- username/password sai
+- Token không hợp lệ
+- không có quyền truy cập
+- token hết hạn
+-----------------------------------
+entity add
+Category, Todo 
+apply react with springboot to build app
+-- TODO
+CRUD for todo, category
+
+-- 
+note trước khi đi bắn delta force
+hàm toModel đang bị ngu, nên sửa cái đó
+chỗ service create cũng đang bị ngu logic > nhớ sửa chõ đó luôn > bỏ cái toModel ra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
