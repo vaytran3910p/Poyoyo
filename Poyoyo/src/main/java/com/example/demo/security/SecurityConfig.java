@@ -12,6 +12,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+	// Setup SecurityFilterChain bean
+	// inject JwtAuthenticationFilters
+	// Disable session state
+	// Set up public and private Route rules
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception  {
         http.csrf(csrf -> csrf.disable())

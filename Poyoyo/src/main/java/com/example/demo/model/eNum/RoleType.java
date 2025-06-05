@@ -1,7 +1,14 @@
 package com.example.demo.model.eNum;
 
 public enum RoleType {
-	ADMIN,
-	STAFF,
-	USER
+	ROLE_ADMIN("ADMIN"),
+	ROLE_USER("USER");
+	
+	private final String displayName;
+	RoleType(String displayName) {
+		this.displayName = displayName;
+	}
+	public String getDisplayName() {
+		return displayName;
+	}
 }
