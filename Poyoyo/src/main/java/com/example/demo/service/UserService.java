@@ -8,11 +8,13 @@ import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.dto.PageResponse;
 import com.example.demo.dto.UserDTO;
+import com.example.demo.dto.AuthDTO.RegisterRequest;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
@@ -25,10 +27,12 @@ public class UserService {
 	private UserMapper mapper;
 	private UserRepository repo;
 	private RoleRepository roleRepo;
-	public UserService (UserMapper mapper, UserRepository repo, RoleRepository roleRepo) {
+	private PasswordEncoder encoder;
+	public UserService (UserMapper mapper, UserRepository repo, RoleRepository roleRepo, PasswordEncoder encoder) {
 		this.mapper = mapper;
 		this.repo = repo;
 		this.roleRepo = roleRepo;
+		this.encoder = encoder;
 	}
 	public List<UserDTO> findAll () {
 		return repo.findAll().stream().map(mapper::toDTO).toList();
@@ -50,7 +54,6 @@ public class UserService {
 										 .orElseThrow(() -> new ResourceNotFoundException("Role not found"))).collect(Collectors.toSet());
 		saveuser.setRoles(roles);
 		saveuser.setStatus("ACT");
-		saveuser.setIsActive(1);
 		saveuser.setIsDelete(0);
 		saveuser = repo.save(saveuser);
 		return mapper.toDTO(saveuser);
@@ -74,5 +77,18 @@ public class UserService {
 	public List<UserDTO> getLstUserWithCondition() {
 		return repo.getLstUserWithCompleteInfo();
 	}
-	
-}
+	//-- auth service
+	public void registerUser(RegisterRequest request) {
+		if (repo.existsByUserName(request.getUserName())) {
+			throw new RuntimeException("UserName already taken");
+		}
+		Role role = roleRepo.findByRole(RoleType.valueOf("USER"))
+		 .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+		User user =  new User();
+		user.setUserName(request.getUserName());
+		user.setPassWord(encoder.encode(request.getPassWord()));
+		user.setRoles(Set.of(role));
+		user.setStatus("ACT");
+		user = repo.save(user);
+	}
+}	

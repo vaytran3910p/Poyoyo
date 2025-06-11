@@ -10,4 +10,5 @@ import com.example.demo.repository.CustomRepo.UserRepositoryCustom;
 
 public interface UserRepository extends UserRepositoryCustom,JpaRepository<User, Long> {
 	Optional<User> findByUserName(String username);
+	boolean existsByUserName(String username);
 }

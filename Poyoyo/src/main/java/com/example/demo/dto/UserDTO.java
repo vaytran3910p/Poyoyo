@@ -11,17 +11,14 @@ public class UserDTO {
 	private Long userId;
 	private String userName;
 	private String passWord;
-	private String email;
 	private String status; 
 	private Set<String> roles;
-	private int isActive;
 	private int isDelete;
 	
-	public UserDTO (Long userId,String userName, String passWord, String email, String status) {
+	public UserDTO (Long userId,String userName, String passWord, String status) {
 		this.userId = userId;
 		this.userName = userName;
 		this.passWord = passWord;
-		this.email = email;
 		this.status = status;
 	}
 }

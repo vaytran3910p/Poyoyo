@@ -33,8 +33,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 					(Long) row[0],   // userId
  					(String) row[1], // username
 					(String) row[2], // password
-					(String) row[3], // email
-					(String) row[4]  // status
+					(String) row[3]  // status
 				)).toList();
 	}
 }	

@@ -1,8 +1,8 @@
 package com.example.demo.model.eNum;
 
 public enum RoleType {
-	ROLE_ADMIN("ADMIN"),
-	ROLE_USER("USER");
+	ADMIN("ADMIN"),
+	USER("USER");
 	
 	private final String displayName;
 	RoleType(String displayName) {
@@ -11,4 +11,5 @@ public enum RoleType {
 	public String getDisplayName() {
 		return displayName;
 	}
+	
 }

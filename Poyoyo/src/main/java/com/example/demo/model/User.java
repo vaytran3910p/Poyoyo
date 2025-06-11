@@ -29,8 +29,6 @@ public class User {
 	
 	private String userName;
 	private String passWord;
-	private String email;
-	private String status; 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name = "user_role",
@@ -38,6 +36,6 @@ public class User {
 		inverseJoinColumns = @JoinColumn(name = "role_id")
 	)
 	private Set<Role> roles;
-	private int isActive;
+	private String status; 
 	private int isDelete;
 }

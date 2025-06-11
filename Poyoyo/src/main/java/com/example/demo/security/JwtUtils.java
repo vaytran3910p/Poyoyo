@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import com.example.demo.controller.CategoryController;
@@ -20,7 +21,7 @@ public class JwtUtils {
     private final CategoryController categoryController;
     
     @Value("${jwt.secret}")
-	private static String SECRET_KEY;
+	private String SECRET_KEY;
 	
 	private static final long EXPIREATION_TIME = 1000 * 60 * 60 * 10;
 
@@ -28,6 +29,16 @@ public class JwtUtils {
         this.categoryController = categoryController;
     }
 	
+    public String generateJwtToken(Authentication auth) {
+    	UserDetailsImpl userPrincipal = (UserDetailsImpl) auth.getPrincipal();
+    	return Jwts.builder()
+    			.setSubject(userPrincipal.getUsername())
+    			.setIssuedAt(new Date())
+    			.setExpiration(new Date((new Date()).getTime() + EXPIREATION_TIME))
+    			.signWith(getSignKey(), SignatureAlgorithm.HS256)
+    			.compact();
+    }
+    
 	// generating JWT
     public String generateToken (UserDetails userDetail) {
     	Map<String, Object> claims = new HashMap<String, Object>();
@@ -43,7 +54,7 @@ public class JwtUtils {
 							.compact();
 		return token;
 	}
-	
+	// Extract info from token
 	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
 		final Claims claims = extractAllClaims(token);
 		return claimsResolver.apply(claims);
@@ -65,6 +76,7 @@ public class JwtUtils {
 		return extractexpireation(token).before(new Date());
 	}
 	
+	// validate token
 	public boolean validateJwtToken(String token, UserDetails userDetail) { 
 		final String username = extractUerName(token);
 		return (username.equals(userDetail.getUsername()) && !isTokenExpired(token));
@@ -73,7 +85,7 @@ public class JwtUtils {
 	private Key getSignKey() {
 		return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 	}
-	// --------------------------
+
 	
 	
 	
